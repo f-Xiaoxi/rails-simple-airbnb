@@ -1,0 +1,15 @@
+.row {
+  display: flex;
+}
+.column {
+  flex: 50%;
+  padding: 16px;
+  height: 250px;
+}
+
+.main {
+  position: absolute;
+  margin-top: -40px;
+  margin-left: auto;
+  margin-right: auto;
+}

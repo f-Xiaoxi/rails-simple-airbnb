@@ -1,0 +1,75 @@
+<nav class="navbar navbar-light bg-light justify-content-between p-3">
+<div class="col-sm-4">
+  <a class="navbar-brand">Simple Airbnb</a>
+</div>
+
+<form class="row row-cols-lg-auto g-3">
+  <div class="col-12">
+    <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+  </div>
+  <div class="col-12">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </div>
+  <div class="col-12">
+    <%= link_to "Add flat", new_flat_path(@flat), :class => "btn btn-outline-primary" %>
+  </div>
+</div>
+</nav>
+
+<div class="bg-image position-relative"></div>
+
+<div class="main">
+  <div class="row gx-5 justify-content-center">
+    <div class="col-6">
+      <div class="p-3 mb-3 border bg-light">
+        <h1><%= @flat.name %></h1>
+        <p><%= @flat.address %></p>
+      </div>
+      <div class="p-3 border">
+        <h3>A bit more about this flat...</h3>
+        <p><%= @flat.description %></p>
+     </div>
+    </div>
+    <div class="col-4">
+      <div class="p-3 mb-3 border bg-light">
+        <h4>Book this place!</h4>
+        <%# form %>
+        <div class="input-group mb-2">
+          <span class="input-group-text" id="inputGroup-sizing-default">From:</span>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="12/10/2022">
+        </div>
+        <div class="input-group mb-2">
+          <span class="input-group-text" id="inputGroup-sizing-default">To:</span>
+          <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" placeholder="12/10/2022">
+        </div>
+        <div class="d-grid">
+          <button type="submit" class="btn btn-success">Book!</button>
+        </div>
+      </div>
+
+      <div class="p-3 mb-3 border bg-light">
+        <h4>Details</h4>
+        <div class="d-flex flex-row">
+          <div class="flex align-items-center">
+            <%= @flat.number_of_guests %> people
+          </div>
+          <div class="flex align-items-center ms-3">
+            $<%= @flat.price_per_night %>
+          </div>
+        </div>
+      </div>
+      <%# share icons %>
+      <div class="p-3 border bg-light">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="flex align-items-center">
+            <h6 class="mb-0">Share</h6>
+          </div>
+          <div class="flex align-items-center ms-3">
+            <i class="fa-brands fa-facebook-square me-2"></i>
+            <i class="fa-brands fa-twitter-square me-2"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </div>

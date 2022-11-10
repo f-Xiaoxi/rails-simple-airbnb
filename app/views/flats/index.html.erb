@@ -1,0 +1,71 @@
+<nav class="navbar navbar-light bg-light justify-content-between p-3">
+<div class="col-sm-4">
+  <a class="navbar-brand">Simple Airbnb</a>
+</div>
+
+<form class="row row-cols-lg-auto g-3">
+  <div class="col-12">
+    <input type="text" class="form-control" placeholder="Search" aria-label="Search">
+  </div>
+  <div class="col-12">
+    <button class="btn btn-outline-success" type="submit">Search</button>
+  </div>
+  <div class="col-12">
+    <%= link_to "Add flat", new_flat_path(@flat), :class => "btn btn-outline-primary" %>
+  </div>
+</div>
+</nav>
+
+
+  <div class="container mt-3">
+    <div class="row">
+      <h2 class="card-title">All our Flats</h2>
+    </div>
+    <div class="row">
+      <p>All <%= @flats.count %> flats.</p>
+    </div>
+    <%# each card %>
+    <div class="row p-0">
+      <% @flats.each do |flat| %>
+        <div class="col-sm-4 mb-4">
+          <div class="card">
+            <%# card top image %>
+            <div class="card-image"></div>
+              <%# card body with flat details %>
+              <div class="card-body bg-light border-bottom">
+                  <h5 class="card-title">
+                    <%= flat.name %>
+                  </h5>
+                  <p class="card-text">
+                    <%= flat.address %>
+                  </p>
+                  <%# flat number and price %>
+                  <div class="d-flex flex-row">
+                    <div class="flex align-items-center">
+                      <i class="fa-solid fa-people-line"></i>
+                      <%= flat.number_of_guests %>
+                    </div>
+                  <div class="flex align-items-center ms-3">
+                    $<%= flat.price_per_night %>
+                  </div>
+                </div>
+              </div>
+            <%# card body with links %>
+            <div class="card-body">
+              <div class="d-flex flex-row justify-content-start">
+                <div class="flex me-3">
+                  <%= link_to "More info", flat_path(flat) %>
+                </div>
+                <div class="flex me-3">
+                  <%= link_to "Edit", edit_flat_path(flat), :class => "link-warning" %>
+                </div>
+                <div class="flex me-3">
+                  <%= link_to "Delete", flats_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
